@@ -503,9 +503,11 @@ The planner should respect these hard dependencies (each depends on the prior):
 | A4 | Default color hex values (`#0A0A0F` etc.) from UI-SPEC are final | Pattern 2 | Low — UI-SPEC marks them `[default]` but the contract is approved/binding. |
 | A5 | `gh` CLI absence is acceptable (Pages source set via web UI) | Environment Availability | Low — web UI toggle is a standard one-time owner step. |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Resume PDF availability (D-07)**
+All three are resolved in the plans as blocking checkpoints (resume gate in 01-04, font gate in 01-02, basePath locked in 01-01). None blocks execution.
+
+1. **Resume PDF availability (D-07)** — RESOLVED: 01-04 leading `checkpoint:human-action` confirms `public/resume.pdf` (`%PDF` check) before live verify.
    - What we know: Owner will place a real `resume.pdf` in `public/`; the link must be basePath-aware and verified live.
    - What's unclear: Whether the file exists yet at execution time.
    - Recommendation: Plan a `checkpoint:human-verify` (or owner action) confirming `public/resume.pdf` exists before the live-URL verification task; do not ship a 404 link.
@@ -514,10 +516,12 @@ The planner should respect these hard dependencies (each depends on the prior):
    - What we know: Clash Display is a Fontshare font (ITF Free License, self-hostable); contract loads weight 600 only.
    - What's unclear: Whether the `.woff2` has been downloaded into `public/fonts/`.
    - Recommendation: First font task downloads/places the `.woff2` (Semibold 600); confirm subset/weights before wiring `localFont`.
+   - RESOLVED: 01-02 leading `checkpoint:human-action` (woff2 signature check) gates font wiring.
 
 3. **Repo model: project page confirmed (no custom domain this phase)**
    - What we know: basePath `/jackyzhang` (project page) is locked; custom domain + user-site repo are deferred (DEPTH-02).
    - Recommendation: No action — proceed with basePath `/jackyzhang`; the single-source env var makes a future domain switch a one-line change.
+   - RESOLVED: basePath `/jackyzhang` locked via single `NEXT_PUBLIC_BASE_PATH` source in 01-01.
 
 ## Sources
 
