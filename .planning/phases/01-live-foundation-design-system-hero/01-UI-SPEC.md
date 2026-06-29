@@ -69,7 +69,7 @@ Two text weights total across the system: **400** and **600** (DSYS keeps the we
 |------|------|------|--------|-------------|-------|
 | Display (hero LCP h1) | Clash Display | `clamp(2.75rem, 6vw, 4.5rem)` (~44→72px) | 600 | 1.05 | The **only** gradient-filled text. Renders at full opacity, never animated (HERO-03). Tracking `-0.02em`. |
 | Heading (section h2) | Clash Display | 28px (`1.75rem`) | 600 | 1.2 | Solid near-white, NOT gradient. |
-| Body | Inter | 16px (`1rem`) | 400 | 1.5 | Solid near-white / muted. Sub-headline may scale to 18px on desktop. |
+| Body | Inter | 16px (`1rem`) | 400 | 1.5 | Solid near-white / muted. Held at 16px across all viewports. The hero sub-headline uses this size at weight **600** (not a larger size) to distinguish it from running body copy. |
 | Label / Kicker / Pill | JetBrains Mono | 14px (`0.875rem`) | 400 | 1.4 | Uppercase, tracking `0.08em`. Used for the "Computer Engineering @ UIUC" eyebrow, tech pills, nav. |
 | Emphasis (button label / inline strong) | Inter | 16px | 600 | 1.5 | The semibold weight. |
 
@@ -109,11 +109,11 @@ Everything else (secondary/tertiary CTAs, surfaces, body text, borders) uses the
 | Element | Copy | Notes |
 |---------|------|-------|
 | Primary CTA | **View Work** | Scrolls to / links toward the Projects section (anchor). The one accent-filled button. |
-| Secondary CTA | **Resume** | Downloads `/resume.pdf` (basePath-aware). Outline/secondary style. |
-| Tertiary CTA | **Contact** | `mailto:` link, opens email client. Ghost/text style. |
+| Secondary CTA | **Download Resume** | Downloads `/resume.pdf` (basePath-aware). Outline/secondary style. Action verb added for recruiter-first scannability. |
+| Tertiary CTA | **Get in Touch** | `mailto:` link, opens email client. Ghost/text style. Warmer founder-energy phrasing over a bare "Contact". |
 | Hero kicker (eyebrow) | **Computer Engineering @ UIUC** | Mono, uppercase, tracked. Satisfies HERO-01 identity. `[draft — owner to confirm]` |
 | Hero headline (display h1) | **Jacky Zhang** | The LCP element. Gradient fill. `[draft — owner to confirm]` |
-| Hero sub-headline (builder one-liner / arc) | **I build and ship real things — from a live automotive marketplace to robotics and games played 40,000+ times.** | Solid near-white body. Conveys games → robotics → startups arc (HERO-02). `[draft — owner to confirm]` |
+| Hero sub-headline (builder one-liner / arc) | **I build and ship real things — from a live automotive marketplace to robotics and games played 40,000+ times.** | Solid near-white body, 16px at weight **600** (no fifth size). Conveys games → robotics → startups arc (HERO-02). `[draft — owner to confirm]` |
 | Empty state | not applicable | Static portfolio; Phase 1 hero has no data-driven empty state. |
 | Error state | not applicable | No async/data fetching in Phase 1. Resume download and `mailto:` are static links with no failure UI. |
 | Destructive confirmation | not applicable | No destructive actions in this phase. |
