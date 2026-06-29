@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 1 context gathered
-last_updated: "2026-06-29T18:25:13.236Z"
-last_activity: 2026-06-29 — Roadmap created (4 vertical MVP phases, 23 requirements mapped)
+status: executing
+stopped_at: Completed 01-01-PLAN.md (code complete; live-deploy verification deferred to owner)
+last_updated: "2026-06-29T19:27:00.000Z"
+last_activity: 2026-06-29 -- Completed plan 01-01 (scaffold + static-export config + deploy pipeline)
 progress:
   total_phases: 4
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  total_plans: 4
+  completed_plans: 1
+  percent: 25
 ---
 
 # Project State
@@ -21,30 +21,30 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-29)
 
 **Core value:** A recruiter lands on the site and within seconds understands Jacky is a serious builder worth interviewing — backed by concrete, verifiable projects.
-**Current focus:** Phase 1 — Live Foundation (Design System + Hero)
+**Current focus:** Phase 01 — live-foundation-design-system-hero
 
 ## Current Position
 
-Phase: 1 of 4 (Live Foundation — Design System + Hero)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-06-29 — Roadmap created (4 vertical MVP phases, 23 requirements mapped)
+Phase: 01 (live-foundation-design-system-hero) — EXECUTING
+Plan: 2 of 4
+Status: Executing Phase 01 — 01-01 code complete (live-deploy verification deferred to owner)
+Last activity: 2026-06-29 -- Completed plan 01-01 (scaffold + static-export config + deploy pipeline)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [██▌░░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 0
-- Average duration: — min
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 4 min
+- Total execution time: ~0.07 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01 | 1 | 4 min | 4 min |
 
 **Recent Trend:**
 
@@ -74,6 +74,7 @@ None yet.
 
 [Issues that affect future work]
 
+- OWNER ACTION (01-01 Task 3, blocking live verify): set Repo Settings → Pages → Source = "GitHub Actions", push `main`, and confirm `https://jackychip.github.io/jackyzhang/` returns 200 with no `_next/` 404s. Sandbox cannot push/toggle Settings/reach the live URL — code is complete and locally verified; the live publish is the only unverified link. See 01-01-SUMMARY.md "Deferred — Owner Action Required".
 - Owner input needed before Phase 2/3: confirm shareable Revly metrics, final hero builder-arc copy + About narrative, and the current resume PDF to ship.
 - REQUIREMENTS.md originally stated "22 total" but enumerates 23 distinct IDs; coverage count corrected to 23.
 
@@ -87,6 +88,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-06-29T18:25:13.226Z
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-live-foundation-design-system-hero/01-CONTEXT.md
+Last session: 2026-06-29T19:27:00.000Z
+Stopped at: Completed 01-01-PLAN.md (code complete; live-deploy verification deferred to owner)
+Resume file: .planning/phases/01-live-foundation-design-system-hero/01-02-PLAN.md
