@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-02-PLAN.md (design tokens + self-hosted fonts + reduced-motion gate)
-last_updated: "2026-06-29T19:47:06.000Z"
-last_activity: 2026-06-29 -- Completed plan 01-02 (@theme inline tokens, 3 self-hosted fonts, MotionConfig reducedMotion=user)
+stopped_at: Completed 01-03-PLAN.md (UI design-system primitives — Button + Card/TechPill/Section/Timeline; DSYS-04 complete)
+last_updated: "2026-06-29T19:55:13.000Z"
+last_activity: 2026-06-29 -- Completed plan 01-03 (5 content-agnostic primitives, Button focus ring + 44px hit area, DSYS-04 complete)
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 4
-  completed_plans: 2
-  percent: 50
+  completed_plans: 3
+  percent: 75
 ---
 
 # Project State
@@ -26,25 +26,25 @@ See: .planning/PROJECT.md (updated 2026-06-29)
 ## Current Position
 
 Phase: 01 (live-foundation-design-system-hero) — EXECUTING
-Plan: 3 of 4
-Status: Executing Phase 01 — 01-02 complete (design tokens + self-hosted fonts + reduced-motion gate)
-Last activity: 2026-06-29 -- Completed plan 01-02 (@theme inline tokens, 3 self-hosted fonts, MotionConfig reducedMotion=user)
+Plan: 4 of 4
+Status: Executing Phase 01 — 01-03 complete (5 content-agnostic UI primitives; DSYS-04 complete)
+Last activity: 2026-06-29 -- Completed plan 01-03 (Button + Card/TechPill/Section/Timeline shells, focus ring, DSYS-04 complete)
 
-Progress: [█████░░░░░] 50%
+Progress: [███████░░░] 75%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 2
-- Average duration: 3.5 min
-- Total execution time: ~0.12 hours
+- Total plans completed: 3
+- Average duration: 5 min
+- Total execution time: ~0.25 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 | 2 | 7 min | 3.5 min |
+| 01 | 3 | 15 min | 5 min |
 
 **Recent Trend:**
 
@@ -65,6 +65,8 @@ Recent decisions affecting current work:
 - [Roadmap]: Never animate the LCP hero headline; gradient reserved for large display headings only (WCAG AA).
 - [01-02]: `@theme inline` (not bare `@theme`) is mandatory so next/font `--font-*` vars resolve into utilities (Pitfall 4) — verified `var(--font-display)` present in exported CSS.
 - [01-02]: DSYS-04 is two-part — reduced-motion gate shipped in 01-02; visible keyboard focus states ship with primitives in 01-03, so DSYS-04 stays Partial until then.
+- [01-03]: DSYS-04 now Complete — Button carries the `focus-visible:outline-blue` (2px/2px) ring; DSYS-03 advanced to Partial (5/6 primitives; Nav composed in 01-04).
+- [01-03]: Button kept as a Server Component (pure class + polymorphic `as`/element); consumers attach handlers at the call site. Primitives style only from `@theme` tokens via `cn()`; no `dangerouslySetInnerHTML` (T-01-05).
 
 ### Pending Todos
 
@@ -90,6 +92,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-06-29T19:47:06.000Z
-Stopped at: Completed 01-02-PLAN.md (design tokens + self-hosted fonts + reduced-motion gate)
-Resume file: .planning/phases/01-live-foundation-design-system-hero/01-03-PLAN.md
+Last session: 2026-06-29T19:55:13.000Z
+Stopped at: Completed 01-03-PLAN.md (UI design-system primitives; DSYS-04 complete)
+Resume file: .planning/phases/01-live-foundation-design-system-hero/01-04-PLAN.md
