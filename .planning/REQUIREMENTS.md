@@ -9,8 +9,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Design System (DSYS)
 
-- [ ] **DSYS-01**: Site implements the locked design tokens (dark palette, violet→blue→cyan gradient, spacing/radius scale) as a single source of truth
-- [ ] **DSYS-02**: Clash Display, Inter, and JetBrains Mono load self-hosted with no visible layout shift (no FOUT/FOIT)
+- [x] **DSYS-01**: Site implements the locked design tokens (dark palette, violet→blue→cyan gradient, spacing/radius scale) as a single source of truth
+- [x] **DSYS-02**: Clash Display, Inter, and JetBrains Mono load self-hosted with no visible layout shift (no FOUT/FOIT)
 - [ ] **DSYS-03**: Reusable UI primitives exist (Button, Card, Tech pill, Section, Timeline, Nav) consistent with the design system
 - [ ] **DSYS-04**: Site honors `prefers-reduced-motion` and shows visible keyboard focus states throughout
 
@@ -80,10 +80,10 @@ Which phases cover which requirements. **Populated during roadmap creation.**
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DSYS-01 | Phase 1 | Pending |
-| DSYS-02 | Phase 1 | Pending |
+| DSYS-01 | Phase 1 | Complete (01-02) |
+| DSYS-02 | Phase 1 | Complete (01-02) |
 | DSYS-03 | Phase 1 | Pending |
-| DSYS-04 | Phase 1 | Pending |
+| DSYS-04 | Phase 1 | Partial (01-02 reduced-motion; focus states in 01-03) |
 | HERO-01 | Phase 1 | Pending |
 | HERO-02 | Phase 1 | Pending |
 | HERO-03 | Phase 1 | Pending |

@@ -34,7 +34,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. Reusable UI primitives (Button, Card, Tech pill, Section, Timeline, Nav) exist as content-agnostic components, the hero/nav are composed from them, and all assets load with correct paths under the GitHub Pages `basePath`. (DSYS-03, LNCH-05)
 **Plans**: 4 plans
   - [x] 01-01-PLAN.md — Scaffold + static-export config + GitHub Actions deploy pipeline + live placeholder skeleton (LNCH-05) — code complete; live-deploy verification deferred to owner
-  - [ ] 01-02-PLAN.md — Design tokens (`@theme inline`) + self-hosted fonts + reduced-motion provider (DSYS-01/02/04)
+  - [x] 01-02-PLAN.md — Design tokens (`@theme inline`) + self-hosted fonts + reduced-motion provider (DSYS-01/02 complete; DSYS-04 reduced-motion half — focus states in 01-03)
   - [ ] 01-03-PLAN.md — Content-agnostic UI primitives: Button, Card, TechPill, Section, Timeline (DSYS-03/04)
   - [ ] 01-04-PLAN.md — LCP-safe Hero + Nav composition + 3 CTAs + live verification (HERO-01/02/03, LNCH-05, D-01..D-09)
 **UI hint**: yes
@@ -88,7 +88,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Live Foundation — Design System + Hero | 1/4 | In progress (01-01 code complete; live-deploy deferred to owner) | - |
+| 1. Live Foundation — Design System + Hero | 2/4 | In progress (01-02 design tokens + fonts + reduced-motion gate complete) | - |
 | 2. Projects & Proof | 0/2 | Not started | - |
 | 3. Story, Experience & Contact | 0/3 | Not started | - |
 | 4. Motion, Performance & Launch | 0/3 | Not started | - |

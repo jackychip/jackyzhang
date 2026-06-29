@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-01-PLAN.md (code complete; live-deploy verification deferred to owner)
-last_updated: "2026-06-29T19:27:00.000Z"
-last_activity: 2026-06-29 -- Completed plan 01-01 (scaffold + static-export config + deploy pipeline)
+stopped_at: Completed 01-02-PLAN.md (design tokens + self-hosted fonts + reduced-motion gate)
+last_updated: "2026-06-29T19:47:06.000Z"
+last_activity: 2026-06-29 -- Completed plan 01-02 (@theme inline tokens, 3 self-hosted fonts, MotionConfig reducedMotion=user)
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 4
-  completed_plans: 1
-  percent: 25
+  completed_plans: 2
+  percent: 50
 ---
 
 # Project State
@@ -26,25 +26,25 @@ See: .planning/PROJECT.md (updated 2026-06-29)
 ## Current Position
 
 Phase: 01 (live-foundation-design-system-hero) — EXECUTING
-Plan: 2 of 4
-Status: Executing Phase 01 — 01-01 code complete (live-deploy verification deferred to owner)
-Last activity: 2026-06-29 -- Completed plan 01-01 (scaffold + static-export config + deploy pipeline)
+Plan: 3 of 4
+Status: Executing Phase 01 — 01-02 complete (design tokens + self-hosted fonts + reduced-motion gate)
+Last activity: 2026-06-29 -- Completed plan 01-02 (@theme inline tokens, 3 self-hosted fonts, MotionConfig reducedMotion=user)
 
-Progress: [██▌░░░░░░░] 25%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 1
-- Average duration: 4 min
-- Total execution time: ~0.07 hours
+- Total plans completed: 2
+- Average duration: 3.5 min
+- Total execution time: ~0.12 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 | 1 | 4 min | 4 min |
+| 01 | 2 | 7 min | 3.5 min |
 
 **Recent Trend:**
 
@@ -63,6 +63,8 @@ Recent decisions affecting current work:
 - [Roadmap]: Deploy to GitHub Pages via static export (`output: export`) — overrides research SUMMARY's Vercel suggestion. Implies `basePath`, static OG image (no `next/og`), `mailto:` contact, unoptimized images.
 - [Roadmap]: Design-system foundation (tokens, self-hosted Clash Display, `MotionConfig reducedMotion="user"`, focus states, UI primitives) is locked in Phase 1 — retrofitting touches every section.
 - [Roadmap]: Never animate the LCP hero headline; gradient reserved for large display headings only (WCAG AA).
+- [01-02]: `@theme inline` (not bare `@theme`) is mandatory so next/font `--font-*` vars resolve into utilities (Pitfall 4) — verified `var(--font-display)` present in exported CSS.
+- [01-02]: DSYS-04 is two-part — reduced-motion gate shipped in 01-02; visible keyboard focus states ship with primitives in 01-03, so DSYS-04 stays Partial until then.
 
 ### Pending Todos
 
@@ -88,6 +90,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-06-29T19:27:00.000Z
-Stopped at: Completed 01-01-PLAN.md (code complete; live-deploy verification deferred to owner)
-Resume file: .planning/phases/01-live-foundation-design-system-hero/01-02-PLAN.md
+Last session: 2026-06-29T19:47:06.000Z
+Stopped at: Completed 01-02-PLAN.md (design tokens + self-hosted fonts + reduced-motion gate)
+Resume file: .planning/phases/01-live-foundation-design-system-hero/01-03-PLAN.md
