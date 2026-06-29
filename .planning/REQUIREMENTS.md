@@ -11,14 +11,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **DSYS-01**: Site implements the locked design tokens (dark palette, violet→blue→cyan gradient, spacing/radius scale) as a single source of truth
 - [x] **DSYS-02**: Clash Display, Inter, and JetBrains Mono load self-hosted with no visible layout shift (no FOUT/FOIT)
-- [ ] **DSYS-03**: Reusable UI primitives exist (Button, Card, Tech pill, Section, Timeline, Nav) consistent with the design system — 01-03 shipped 5/6 (Button, Card, TechPill, Section, Timeline); Nav lands in 01-04
+- [x] **DSYS-03**: Reusable UI primitives exist (Button, Card, Tech pill, Section, Timeline, Nav) consistent with the design system — 01-03 shipped 5/6; 01-04 composed Nav from those primitives (brand + #work/#about/#contact anchors + Resume Button) → all 6 shipped, Complete
 - [x] **DSYS-04**: Site honors `prefers-reduced-motion` and shows visible keyboard focus states throughout
 
 ### Hero (HERO)
 
-- [ ] **HERO-01**: Visitor sees name, identity (Computer Engineering @ UIUC), and a builder one-liner within the first screen
-- [ ] **HERO-02**: Hero conveys the builder arc (games → robotics → startups) with primary CTAs (view work, resume, contact)
-- [ ] **HERO-03**: Hero renders its LCP heading immediately (no opacity-fade on the LCP element); decorative gradient drift is subtle and reduced-motion safe
+- [ ] **HERO-01**: Visitor sees name, identity (Computer Engineering @ UIUC), and a builder one-liner within the first screen — built + prerendered in 01-04 (kicker "Founder & Lead Engineer @ Revly · CompE @ UIUC", name, one-liner on first screen); live-confirm pending owner deploy
+- [ ] **HERO-02**: Hero conveys the builder arc (games → robotics → startups) with primary CTAs (view work, resume, contact) — built in 01-04 (3 CTAs: View Work / Download Resume / Get in Touch); live-confirm pending owner deploy
+- [ ] **HERO-03**: Hero renders its LCP heading immediately (no opacity-fade on the LCP element); decorative gradient drift is subtle and reduced-motion safe — built in 01-04 (static gradient h1, no Motion in Hero.tsx, prerendered at full opacity in out/index.html; static ambient glow with globals.css reduced-motion guard); live-confirm pending owner deploy
 
 ### Projects (PROJ)
 
@@ -49,7 +49,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **LNCH-02**: Mobile Lighthouse Performance ≥ 90 and LCP < 2.5s
 - [ ] **LNCH-03**: Text meets WCAG AA contrast on the dark theme
 - [ ] **LNCH-04**: Site has SEO metadata and a static Open Graph image so shared links render a rich preview
-- [ ] **LNCH-05**: Site is deployed live on GitHub Pages with correct asset paths (basePath handled)
+- [ ] **LNCH-05**: Site is deployed live on GitHub Pages with correct asset paths (basePath handled) — code + static export complete (01-01 pipeline, 01-04 hero composed; withBasePath on resume.pdf); only satisfied by the deferred live-URL verification (owner deploy) — Partial
 
 ## v2 Requirements
 
@@ -82,12 +82,12 @@ Which phases cover which requirements. **Populated during roadmap creation.**
 |-------------|-------|--------|
 | DSYS-01 | Phase 1 | Complete (01-02) |
 | DSYS-02 | Phase 1 | Complete (01-02) |
-| DSYS-03 | Phase 1 | Partial (01-03 primitives Button/Card/TechPill/Section/Timeline; Nav in 01-04) |
+| DSYS-03 | Phase 1 | Complete (01-03 Button/Card/TechPill/Section/Timeline + 01-04 Nav — all 6 primitives) |
 | DSYS-04 | Phase 1 | Complete (01-02 reduced-motion + 01-03 visible keyboard focus ring) |
-| HERO-01 | Phase 1 | Pending |
-| HERO-02 | Phase 1 | Pending |
-| HERO-03 | Phase 1 | Pending |
-| LNCH-05 | Phase 1 | Pending |
+| HERO-01 | Phase 1 | Built (01-04 — prerendered name + kicker + one-liner on first screen); live-confirm pending |
+| HERO-02 | Phase 1 | Built (01-04 — builder one-liner + 3 CTAs); live-confirm pending |
+| HERO-03 | Phase 1 | Built (01-04 — static gradient LCP h1, no Motion, full opacity in out/index.html); live-confirm pending |
+| LNCH-05 | Phase 1 | Partial (code + static export complete; deferred live-URL verification) |
 | PROJ-01 | Phase 2 | Pending |
 | PROJ-02 | Phase 2 | Pending |
 | PROJ-03 | Phase 2 | Pending |

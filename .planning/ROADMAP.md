@@ -36,7 +36,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   - [x] 01-01-PLAN.md — Scaffold + static-export config + GitHub Actions deploy pipeline + live placeholder skeleton (LNCH-05) — code complete; live-deploy verification deferred to owner
   - [x] 01-02-PLAN.md — Design tokens (`@theme inline`) + self-hosted fonts + reduced-motion provider (DSYS-01/02 complete; DSYS-04 reduced-motion half — focus states in 01-03)
   - [x] 01-03-PLAN.md — Content-agnostic UI primitives: Button, Card, TechPill, Section, Timeline (DSYS-04 complete; DSYS-03 primitives shipped, Nav in 01-04)
-  - [ ] 01-04-PLAN.md — LCP-safe Hero + Nav composition + 3 CTAs + live verification (HERO-01/02/03, LNCH-05, D-01..D-09)
+  - [x] 01-04-PLAN.md — LCP-safe Hero + Nav composition + 3 CTAs (HERO-01/02/03, DSYS-03 complete, D-01..D-09) — code complete + static export verified; live-URL verification deferred to owner
 **UI hint**: yes
 
 ### Phase 2: Projects & Proof
@@ -88,7 +88,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Live Foundation — Design System + Hero | 3/4 | In progress (01-03 UI primitives complete; DSYS-04 done) | - |
+| 1. Live Foundation — Design System + Hero | 4/4 | Code complete (hero + nav composed; DSYS-03/04 done); live-URL verification deferred to owner | - |
 | 2. Projects & Proof | 0/2 | Not started | - |
 | 3. Story, Experience & Contact | 0/3 | Not started | - |
 | 4. Motion, Performance & Launch | 0/3 | Not started | - |
