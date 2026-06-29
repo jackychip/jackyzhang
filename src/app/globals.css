@@ -39,12 +39,36 @@ body {
 }
 
 /*
- * Reduced-motion guard for the hero's CSS-keyframe ambient glow (built in
- * 01-04). Belt-and-suspenders alongside the global MotionConfig
- * reducedMotion="user" gate (Pattern 5 / DSYS-04).
+ * Terminal hero cursor — blinking block after the LCP name (decorative,
+ * aria-hidden). The name itself never animates (HERO-03); only this cursor does.
+ */
+@keyframes terminal-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor {
+  animation: terminal-blink 1.05s step-end infinite;
+}
+
+/*
+ * Reduced-motion guard for the hero's CSS-keyframe effects (ambient glow +
+ * terminal cursor, built in 01-04). Belt-and-suspenders alongside the global
+ * MotionConfig reducedMotion="user" gate (Pattern 5 / DSYS-04). The cursor
+ * stays solid (opacity 1) rather than blinking.
  */
 @media (prefers-reduced-motion: reduce) {
   .ambient-glow {
     animation: none;
+  }
+  .terminal-cursor {
+    animation: none;
+    opacity: 1;
   }
 }
