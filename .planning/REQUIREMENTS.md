@@ -80,13 +80,35 @@ Which phases cover which requirements. **Populated during roadmap creation.**
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (to be filled by roadmapper) | — | Pending |
+| DSYS-01 | Phase 1 | Pending |
+| DSYS-02 | Phase 1 | Pending |
+| DSYS-03 | Phase 1 | Pending |
+| DSYS-04 | Phase 1 | Pending |
+| HERO-01 | Phase 1 | Pending |
+| HERO-02 | Phase 1 | Pending |
+| HERO-03 | Phase 1 | Pending |
+| LNCH-05 | Phase 1 | Pending |
+| PROJ-01 | Phase 2 | Pending |
+| PROJ-02 | Phase 2 | Pending |
+| PROJ-03 | Phase 2 | Pending |
+| PROJ-04 | Phase 2 | Pending |
+| PROJ-05 | Phase 2 | Pending |
+| ABOUT-01 | Phase 3 | Pending |
+| EXP-01 | Phase 3 | Pending |
+| EXP-02 | Phase 3 | Pending |
+| EXP-03 | Phase 3 | Pending |
+| CONT-01 | Phase 3 | Pending |
+| CONT-02 | Phase 3 | Pending |
+| LNCH-01 | Phase 4 | Pending |
+| LNCH-02 | Phase 4 | Pending |
+| LNCH-03 | Phase 4 | Pending |
+| LNCH-04 | Phase 4 | Pending |
 
 **Coverage:**
-- v1 requirements: 22 total
-- Mapped to phases: (pending roadmap)
-- Unmapped: (pending roadmap)
+- v1 requirements: 23 total (source previously listed "22" — miscount; 23 distinct IDs are enumerated)
+- Mapped to phases: 23 / 23 ✓
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-06-29*
-*Last updated: 2026-06-29 after initial definition*
+*Last updated: 2026-06-29 after roadmap creation (traceability populated, count corrected to 23)*
