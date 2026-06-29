@@ -32,7 +32,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Clash Display, Inter, and JetBrains Mono are self-hosted (`next/font/local` + `next/font`) and render with no visible font swap or layout shift (no FOUT/FOIT/CLS). (DSYS-02)
   4. All colors, the signature gradient, and the spacing/radius scale resolve from a single design-token source (Tailwind v4 `@theme`), and keyboard focus is visibly indicated everywhere. (DSYS-01, DSYS-04)
   5. Reusable UI primitives (Button, Card, Tech pill, Section, Timeline, Nav) exist as content-agnostic components, the hero/nav are composed from them, and all assets load with correct paths under the GitHub Pages `basePath`. (DSYS-03, LNCH-05)
-**Plans**: TBD (est. 4)
+**Plans**: 4 plans
+  - [ ] 01-01-PLAN.md — Scaffold + static-export config + GitHub Actions deploy pipeline + live placeholder skeleton (LNCH-05)
+  - [ ] 01-02-PLAN.md — Design tokens (`@theme inline`) + self-hosted fonts + reduced-motion provider (DSYS-01/02/04)
+  - [ ] 01-03-PLAN.md — Content-agnostic UI primitives: Button, Card, TechPill, Section, Timeline (DSYS-03/04)
+  - [ ] 01-04-PLAN.md — LCP-safe Hero + Nav composition + 3 CTAs + live verification (HERO-01/02/03, LNCH-05, D-01..D-09)
 **UI hint**: yes
 
 ### Phase 2: Projects & Proof
