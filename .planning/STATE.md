@@ -91,6 +91,7 @@ None yet.
 | Date | Slug | Summary | Commit |
 |------|------|---------|--------|
 | 2026-06-29 | hero-terminal-restyle | Replaced gradient hero h1 with terminal "whoami" prompt + solid mono name + blinking cyan cursor (reverses D-01, owner request); LCP/reduced-motion safe | `01eed28` |
+| 2026-06-29 | remove-gradient-monochrome | Removed all remaining gradient fills site-wide (monochrome near-white buttons/404 h1, removed violet hero glow); rendered output gradient-free | `187bd33` |
 
 ## Deferred Items
 
