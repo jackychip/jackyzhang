@@ -21,7 +21,7 @@ import { cn } from "@/lib/cn";
  *   (T-01-06) — the prop pass-through supports it.
  * - Optional leading/trailing `lucide-react` icon via `icon` + `iconPosition`.
  *
- * The `focus-visible:outline-cyan` (#22D3EE, 2px / 2px offset) ring in `base` is
+ * The `focus-visible:outline-accent` (#F97316, 2px / 2px offset) ring in `base` is
  * the DSYS-04 keyboard focus state — never strip `outline` without an equivalent.
  *
  * Pure class + polymorphic element → no interactive handlers of its own, so this
@@ -44,7 +44,7 @@ const sizes: Record<Size, string> = {
 
 // `min-h-11` (44px) is the hit-area rule and lives here so BOTH sizes keep it.
 const base =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] font-sans font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] font-sans font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:pointer-events-none disabled:opacity-50";
 
 type SharedProps = {
   variant?: Variant;

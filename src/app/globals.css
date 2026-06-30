@@ -16,7 +16,7 @@
  * generated utilities (Pitfall 4 — without `inline`, fonts silently fall back).
  * No design hex is hardcoded anywhere else: primitives and the hero reference
  * these tokens via Tailwind utilities (bg-bg, text-text, border-border,
- * text-cyan, rounded radii, ...). Monochrome direction — no gradients.
+ * text-accent, rounded radii, ...). Monochrome direction — no gradients.
  */
 @theme inline {
   --font-display: var(--font-display);
@@ -24,15 +24,15 @@
   --font-mono: var(--font-mono);
 
   /*
-   * Three-color system ONLY: black, white, cyan. Hierarchy (surfaces, borders,
-   * muted text) comes from OPACITY of white/black — never a fourth hue.
+   * Three-color system ONLY: black, white, medium-orange accent. Hierarchy
+   * (surfaces, borders, muted text) comes from OPACITY of white — never a 4th hue.
    */
   --color-bg: #000000; /* black — page + pane background */
   --color-surface: #000000; /* black — panes read via their border, not fill */
   --color-border: rgba(255, 255, 255, 0.16); /* white @ 16% — hairlines */
   --color-text: #ffffff; /* white — primary text */
   --color-text-muted: rgba(255, 255, 255, 0.55); /* white @ 55% — meta text */
-  --color-cyan: #22d3ee; /* cyan — the only accent (prompt, cursor, focus, active) */
+  --color-accent: #f97316; /* medium orange — the only accent (prompt, cursor, focus, active) */
 
   --radius-sm: 6px; /* tech pills, small chips */
   --radius-md: 10px; /* buttons */

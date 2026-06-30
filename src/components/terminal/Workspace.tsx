@@ -11,59 +11,103 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/Button";
 import { withBasePath } from "@/lib/base-path";
-import { SECTIONS, type SectionId } from "@/lib/sections";
+import { Echo, NODES, TOP_LEVEL, type NodeId } from "@/lib/sections";
 import { PaneFrame } from "./PaneFrame";
 
 /**
- * Workspace — the tiling-terminal portfolio.
+ * Workspace — the tiling-terminal portfolio (Miller-column navigation).
  *
- * The hero pane is pinned at the left (with a margin). Clicking a launcher
- * "opens" a section as its own terminal pane appended on the RIGHT; the whole
- * row then slides LEFT (animated `x`) so the newest pane stays flush to the
- * right edge and older panes slide off-screen to the left. Closing a pane
- * slides the row back to the right. No scrollbar — a transform shift.
+ * Open panes form a PATH from the pinned hero (root): `path[0]` is the column-1
+ * selection, `path[1]` column-2, etc. Panes = [hero, ...path].
  *
- * Re-opening an already-open section moves it to the end (slides it back into
- * view). On narrow screens the panes stack vertically (no shift) and the page
- * scrolls normally.
+ *   - A TOP_LEVEL launcher (or the hero's `ls`) sets column 1 — `setPath([id])`
+ *     — so opening ./about then ./experience REPLACES the child pane (siblings
+ *     don't stack).
+ *   - A node's child entry appends the next column — open ./experience then
+ *     `revly/` → [hero, experience, revly]. Selecting a different child replaces
+ *     everything to its right.
+ *   - Closing a pane truncates the path from that column rightward.
  *
- * LCP note: this is a client component, but App Router SSG still server-renders
- * its initial HTML — the hero name <h1> is static (no entrance animation), so
- * it remains the immediate, full-opacity LCP element (HERO-03). Only the row
- * shift + pane entrance animate, and the global MotionConfig reducedMotion
- * snaps those under prefers-reduced-motion.
+ * Whenever the path changes the row slides so the newest pane stays flush-right
+ * and older panes slide off-screen left (animated `x`); closing slides it back.
+ * Narrow screens stack vertically. Reduced motion snaps via global MotionConfig.
+ *
+ * LCP: client component, but App Router SSG server-renders the static hero <h1>
+ * (no entrance animation) → it stays the immediate, full-opacity LCP element.
  */
+
+/** Pane body: a node's static content + its clickable `ls` children. */
+function NodeBody({
+  id,
+  onOpenChild,
+}: {
+  id: NodeId;
+  onOpenChild: (childId: NodeId) => void;
+}) {
+  const node = NODES[id];
+  return (
+    <div className="space-y-4">
+      {node.body}
+      {node.children?.length ? (
+        <div className="space-y-2">
+          <Echo>ls</Echo>
+          <ul className="space-y-1">
+            {node.children.map((childId) => (
+              <li key={childId}>
+                <button
+                  type="button"
+                  onClick={() => onOpenChild(childId)}
+                  className="rounded-[var(--radius-sm)] text-left text-text transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                >
+                  {NODES[childId].label}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <p className="text-xs text-text-muted/70">
+            ↳ click an entry to open it in a new pane →
+          </p>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 export function Workspace() {
-  const [open, setOpen] = useState<SectionId[]>([]);
+  const [path, setPath] = useState<NodeId[]>([]);
   const [shift, setShift] = useState(0);
   const [isNarrow, setIsNarrow] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
 
-  const openPane = useCallback((id: SectionId) => {
-    // Move-to-end if already open (slides it back into view), else append.
-    setOpen((prev) => [...prev.filter((x) => x !== id), id]);
-  }, []);
+  // Open a top-level section as column 1 (replaces any current sibling chain).
+  const openTop = useCallback((id: NodeId) => setPath([id]), []);
 
-  const closePane = useCallback((id: SectionId) => {
-    setOpen((prev) => prev.filter((x) => x !== id));
-  }, []);
+  // Open `childId` as the column right after the pane at `pathIndex`.
+  const openChildAt = useCallback(
+    (pathIndex: number, childId: NodeId) =>
+      setPath((prev) => [...prev.slice(0, pathIndex + 1), childId]),
+    [],
+  );
+
+  // Close the pane at `pathIndex` and everything to its right.
+  const closeAt = useCallback(
+    (pathIndex: number) => setPath((prev) => prev.slice(0, pathIndex)),
+    [],
+  );
 
   const measure = useCallback(() => {
     const c = containerRef.current;
     const r = rowRef.current;
     if (!c || !r) return;
-    const overflow = r.scrollWidth - c.clientWidth;
-    setShift(Math.max(0, overflow));
+    setShift(Math.max(0, r.scrollWidth - c.clientWidth));
   }, []);
 
-  // Re-measure after the pane set or breakpoint changes.
   useLayoutEffect(() => {
     measure();
-  }, [open, isNarrow, measure]);
+  }, [path, isNarrow, measure]);
 
-  // Track the narrow breakpoint (matches Tailwind's `md`).
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
     const update = () => setIsNarrow(mq.matches);
@@ -72,7 +116,6 @@ export function Workspace() {
     return () => mq.removeEventListener("change", update);
   }, []);
 
-  // Re-measure on container resize.
   useEffect(() => {
     const c = containerRef.current;
     if (!c) return;
@@ -81,9 +124,15 @@ export function Workspace() {
     return () => ro.disconnect();
   }, [measure]);
 
-  const openDefs = open
-    .map((id) => SECTIONS.find((s) => s.id === id))
-    .filter((s): s is (typeof SECTIONS)[number] => Boolean(s));
+  // Breadcrumb title for the pane at `pathIndex`, e.g. "~/experience/revly".
+  const titleAt = (pathIndex: number) =>
+    "~/" +
+    path
+      .slice(0, pathIndex + 1)
+      .map((id) => NODES[id].name)
+      .join("/");
+
+  const paneSize = "w-full md:h-[min(68vh,42rem)] md:w-[34rem] md:shrink-0";
 
   return (
     <div className="flex flex-1 flex-col gap-5 px-4 py-6 sm:px-6 lg:px-8">
@@ -94,22 +143,22 @@ export function Workspace() {
         </span>
         <span className="font-mono text-sm text-text-muted">:~$ open</span>
         <div className="flex flex-wrap items-center gap-2">
-          {SECTIONS.map((s) => {
-            const active = open.includes(s.id);
+          {TOP_LEVEL.map((id) => {
+            const active = path[0] === id;
             return (
               <button
-                key={s.id}
+                key={id}
                 type="button"
-                onClick={() => openPane(s.id)}
+                onClick={() => openTop(id)}
                 aria-pressed={active}
                 className={cn(
-                  "rounded-[var(--radius-sm)] border px-2.5 py-1 font-mono text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan",
+                  "rounded-[var(--radius-sm)] border px-2.5 py-1 font-mono text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
                   active
-                    ? "border-cyan/60 text-cyan"
+                    ? "border-accent/60 text-accent"
                     : "border-border text-text-muted hover:border-text-muted hover:text-text",
                 )}
               >
-                {s.command}
+                {NODES[id].label}
               </button>
             );
           })}
@@ -134,19 +183,19 @@ export function Workspace() {
           animate={{ x: isNarrow ? 0 : -shift }}
           transition={{ type: "spring", stiffness: 260, damping: 32 }}
         >
-          {/* Hero pane — pinned, not closable. */}
-          <PaneFrame
-            title="~ — visitor@jackyzhang"
-            className="w-full md:h-[min(68vh,42rem)] md:w-[34rem] md:shrink-0"
-          >
+          {/* Hero pane — pinned, not closable; its `ls` opens top-level panes. */}
+          <PaneFrame title="~ — visitor@jackyzhang" className={paneSize}>
             <div className="space-y-4">
               <p className="text-text-muted">
-                <span className="text-cyan">visitor@jackyzhang</span>
-                <span className="text-cyan">:~$</span> whoami
+                <span className="text-accent">visitor@jackyzhang</span>
+                <span className="text-accent">:~$</span> whoami
               </p>
               <h1 className="text-3xl font-semibold tracking-[-0.02em] text-text sm:text-4xl">
                 Jacky Zhang
-                <span aria-hidden="true" className="terminal-cursor ml-1 text-cyan">
+                <span
+                  aria-hidden="true"
+                  className="terminal-cursor ml-1 text-accent"
+                >
                   ▮
                 </span>
               </h1>
@@ -157,34 +206,46 @@ export function Workspace() {
                 I build and ship real things — from a live automotive marketplace
                 to robotics and games played 40,000+ times.
               </p>
-              <p className="pt-2 text-text-muted">
-                <span className="text-cyan">visitor@jackyzhang</span>
-                <span className="text-cyan">:~$</span> open{" "}
-                <span className="text-text">
-                  about · experience · projects · contact
-                </span>
-              </p>
-              <p className="text-xs text-text-muted/70">
-                ↑ run a command above — each opens a new pane to the right.
-              </p>
+              <div className="space-y-2 pt-1">
+                <Echo>ls</Echo>
+                <ul className="space-y-1">
+                  {TOP_LEVEL.map((id) => (
+                    <li key={id}>
+                      <button
+                        type="button"
+                        onClick={() => openTop(id)}
+                        className="rounded-[var(--radius-sm)] text-left text-text transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      >
+                        {NODES[id].label}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-xs text-text-muted/70">
+                  ↳ open a section — it appears as a pane on the right →
+                </p>
+              </div>
             </div>
           </PaneFrame>
 
-          {/* Section panes — appended on the right, newest stays in view. */}
-          {openDefs.map((s) => (
+          {/* Path panes — Miller columns; newest stays in view. */}
+          {path.map((id, i) => (
             <motion.div
-              key={s.id}
+              key={`${i}-${id}`}
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="w-full md:h-[min(68vh,42rem)] md:w-[34rem] md:shrink-0"
+              className={paneSize}
             >
               <PaneFrame
-                title={s.title}
-                onClose={() => closePane(s.id)}
+                title={titleAt(i)}
+                onClose={() => closeAt(i)}
                 className="h-full"
               >
-                {s.content}
+                <NodeBody
+                  id={id}
+                  onOpenChild={(childId) => openChildAt(i, childId)}
+                />
               </PaneFrame>
             </motion.div>
           ))}

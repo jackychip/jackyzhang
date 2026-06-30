@@ -40,7 +40,7 @@ export function PaneFrame({
             type="button"
             onClick={onClose}
             aria-label={`Close ${title}`}
-            className="ml-auto rounded-[var(--radius-sm)] p-1 text-text-muted transition-colors hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
+            className="ml-auto rounded-[var(--radius-sm)] p-1 text-text-muted transition-colors hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
