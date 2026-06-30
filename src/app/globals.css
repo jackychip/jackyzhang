@@ -1,6 +1,15 @@
 @import "tailwindcss";
 
 /*
+ * Restrict content detection to app source. Tailwind v4 auto-scans the whole
+ * repo (incl. committed .planning/ docs); those docs contain class-name-like
+ * text (e.g. `rounded-[var(--radius-sm|md|lg|pill)]`, `bg-gradient-to-r`) that
+ * Tailwind would emit as utilities — generating invalid CSS that hard-fails the
+ * dev PostCSS parse (500) and dead rules in prod. Exclude it.
+ */
+@source not "../../.planning";
+
+/*
  * DSYS-01 — single design-token source of truth.
  * `@theme inline` (NOT bare `@theme`) is REQUIRED so the next/font-injected
  * --font-display / --font-sans / --font-mono variables resolve into the
