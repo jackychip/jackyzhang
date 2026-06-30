@@ -1,12 +1,13 @@
-import { Nav } from "@/components/Nav";
-import { Hero } from "@/components/Hero";
+import { Workspace } from "@/components/terminal/Workspace";
 
 /**
- * Home — composes the live, on-brand landing page (replaces the 01-01
- * walking-skeleton placeholder): a skip-to-content link (DSYS-04 a11y),
- * the sticky <Nav/>, and the LCP-safe <Hero/>. The Projects/About/Contact
- * sections that the nav + hero anchors target land in Phases 2–3; until then
- * those in-page anchors degrade gracefully (D-09).
+ * Home — the tiling-terminal portfolio. A skip-to-content link (DSYS-04 a11y)
+ * over the <Workspace/>: a pinned hero pane plus section panes the visitor
+ * "opens" as tiled terminals that slide in from the right.
+ *
+ * (Prototype — replaces the 01-04 Nav + Hero scrolling composition. Interaction
+ * direction pending owner sign-off before the content phases are replanned.
+ * Nav.tsx / Hero.tsx / HeroIntro.tsx are retained, unused, for reference.)
  */
 export default function Home() {
   return (
@@ -17,9 +18,8 @@ export default function Home() {
       >
         Skip to content
       </a>
-      <Nav />
       <main id="main" className="flex flex-1 flex-col">
-        <Hero />
+        <Workspace />
       </main>
     </>
   );
