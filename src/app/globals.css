@@ -7,7 +7,7 @@
  * generated utilities (Pitfall 4 — without `inline`, fonts silently fall back).
  * No design hex is hardcoded anywhere else: primitives and the hero reference
  * these tokens via Tailwind utilities (bg-bg, text-text, border-border,
- * from-violet via-blue to-cyan, rounded-[var(--radius-md)], ...).
+ * text-cyan, rounded radii, ...). Monochrome direction — no gradients.
  */
 @theme inline {
   --font-display: var(--font-display);
@@ -19,9 +19,9 @@
   --color-border: #262633; /* hairline borders/dividers */
   --color-text: #ededf2; /* primary text (solid near-white) */
   --color-text-muted: #a1a1b5; /* muted/meta text */
-  --color-violet: #7c3aed; /* gradient stop 1 */
-  --color-blue: #3b82f6; /* gradient stop 2 / focus ring */
-  --color-cyan: #22d3ee; /* gradient stop 3 */
+  --color-violet: #7c3aed; /* reserved accent (currently unused) */
+  --color-blue: #3b82f6; /* focus ring */
+  --color-cyan: #22d3ee; /* terminal accent — prompt + cursor */
 
   --radius-sm: 6px; /* tech pills, small chips */
   --radius-md: 10px; /* buttons */
@@ -58,15 +58,12 @@ body {
 }
 
 /*
- * Reduced-motion guard for the hero's CSS-keyframe effects (ambient glow +
- * terminal cursor, built in 01-04). Belt-and-suspenders alongside the global
- * MotionConfig reducedMotion="user" gate (Pattern 5 / DSYS-04). The cursor
- * stays solid (opacity 1) rather than blinking.
+ * Reduced-motion guard for the hero's terminal cursor (the only remaining
+ * CSS-keyframe effect — the ambient glow was removed). Belt-and-suspenders
+ * alongside the global MotionConfig reducedMotion="user" gate (DSYS-04). The
+ * cursor stays solid (opacity 1) rather than blinking.
  */
 @media (prefers-reduced-motion: reduce) {
-  .ambient-glow {
-    animation: none;
-  }
   .terminal-cursor {
     animation: none;
     opacity: 1;

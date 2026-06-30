@@ -20,20 +20,13 @@ import { HeroIntro } from "@/components/HeroIntro";
  * animates — the static name is never gated behind that entrance.
  *
  * Layout (D-05): centered single column, vertically centered in `min-h-[100svh]`
- * (small-viewport height avoids the mobile URL-bar jump). One decorative ambient
- * radial glow (D-04, opacity ≤ 0.18) sits behind the content; its
- * prefers-reduced a11y guard already lives in globals.css
- * (`.ambient-glow { animation: none }`).
+ * (small-viewport height avoids the mobile URL-bar jump). The background is flat
+ * dark — the former violet ambient radial glow (D-04) was removed per owner
+ * request along with the gradient direction.
  */
 export function Hero() {
   return (
     <section className="relative grid min-h-[100svh] place-items-center overflow-hidden">
-      {/* D-04 — single decorative ambient glow, low opacity, behind the content. */}
-      <div
-        aria-hidden="true"
-        className="ambient-glow pointer-events-none absolute left-1/2 top-1/2 h-[60vmax] w-[60vmax] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.18] blur-3xl [background:radial-gradient(circle,var(--color-violet),transparent_70%)]"
-      />
-
       <Section className="relative z-10 flex flex-col items-center gap-6 text-center">
         {/* Terminal block — decorative prompt line + the LCP name as output. */}
         <div className="flex flex-col items-center gap-3">

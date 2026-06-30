@@ -9,8 +9,9 @@ import { cn } from "@/lib/cn";
 /**
  * Button — the only interactive design-system primitive (DSYS-03/DSYS-04).
  *
- * - `variant`: primary (violet→blue→cyan gradient fill) | secondary (outline) |
- *   ghost (text-only). All variants styled ONLY from @theme tokens.
+ * - `variant`: primary (solid near-white fill, dark text) | secondary (outline) |
+ *   ghost (text-only). Monochrome, no gradient — all variants styled ONLY from
+ *   @theme tokens.
  * - `size`: md (default) | sm — `sm` shrinks the visual padding/text but NEVER
  *   the 44px hit area (`min-h-11` lives in `base`, so it applies to both — the
  *   LNCH-01 / UI-SPEC touch-target rule, achieved via min-height not glyph size).
@@ -31,7 +32,7 @@ type Variant = "primary" | "secondary" | "ghost";
 type Size = "md" | "sm";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-gradient-to-r from-violet via-blue to-cyan text-white",
+  primary: "bg-text text-bg hover:bg-text-muted",
   secondary: "border border-border text-text hover:bg-surface",
   ghost: "text-text hover:bg-surface",
 };
