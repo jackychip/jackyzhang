@@ -183,7 +183,10 @@ export const NODES: Record<NodeId, TreeNode> = {
     body: (
       <div className="space-y-3">
         <Echo>cat experience/revly.md</Echo>
-        <Title>Revly — Founder &amp; Lead Engineer</Title>
+        <Title>
+          <ExtLink href="https://revly.ca/">Revly</ExtLink> — Founder &amp; Lead
+          Engineer
+        </Title>
         <Meta>
           Nov 2025 – Present · Ontario, Canada ·{" "}
           <ExtLink href="https://revly.ca/">revly.ca</ExtLink>
