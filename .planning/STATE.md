@@ -83,6 +83,7 @@ None yet.
 
 - OWNER ACTION (01-04 gate 2, LNCH-05 — blocking live verify): the sandbox cannot authenticate to GitHub (HTTPS remote, no creds/gh/SSH), so the owner must `git push origin main` from their own terminal. Then set Pages → Source = "GitHub Actions" (one-time), wait for "Deploy to GitHub Pages" green, and verify `https://jackychip.github.io/jackyzhang/` — terminal "whoami" name visible immediately at full opacity (solid near-white mono, blinking cyan cursor), 3 CTAs work, `/jackyzhang/resume.pdf` returns 200, `mailto:jackyz4@illinois.edu`, nav anchors no-op without `href="#"` jumps/console errors, fonts swap-free, 360px no horizontal scroll, reduced-motion disables entrance+glow+cursor-blink but not the h1. Subsumes the 01-01 live-verify + Pages source toggle. HERO-01/02/03 + LNCH-05 stay "live-confirm pending" until this passes.
 - RESOLVED (01-04 gate 1, D-07): `public/resume.pdf` committed (`4cf74c2`, %PDF, 136 KB) — Download Resume CTA will resolve once deployed.
+- DIRECTION CHANGE (pending owner sign-off): the home page is now a tiling-terminal workspace prototype (panes slide in from the right) — supersedes the planned scrolling portfolio. Once approved, ROADMAP Phases 2–4 must be replanned around the pane model (each content section = a terminal pane), and Nav.tsx/Hero.tsx/HeroIntro.tsx (currently unused) either retired or repurposed. See quick/20260629-terminal-workspace-tiling/SUMMARY.md.
 - Owner input needed before Phase 2/3: confirm shareable Revly metrics, final About narrative, and any resume-content updates.
 - REQUIREMENTS.md originally stated "22 total" but enumerates 23 distinct IDs; coverage count corrected to 23.
 
@@ -92,6 +93,7 @@ None yet.
 |------|------|---------|--------|
 | 2026-06-29 | hero-terminal-restyle | Replaced gradient hero h1 with terminal "whoami" prompt + solid mono name + blinking cyan cursor (reverses D-01, owner request); LCP/reduced-motion safe | `01eed28` |
 | 2026-06-29 | remove-gradient-monochrome | Removed all remaining gradient fills site-wide (monochrome near-white buttons/404 h1, removed violet hero glow); rendered output gradient-free | `187bd33` |
+| 2026-06-29 | terminal-workspace-tiling | PROTOTYPE: tiling-terminal workspace — pinned hero pane + section panes that slide in from the right (tmux-style); supersedes scrolling portfolio. Also fixed Tailwind v4 .planning/ scan (dev 500). Pending owner sign-off → Phase 2–4 replan | `3bc5802` |
 
 ## Deferred Items
 
