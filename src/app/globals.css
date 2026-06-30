@@ -23,14 +23,16 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 
-  --color-bg: #0a0a0f; /* dominant 60% — page background */
-  --color-surface: #14141f; /* secondary 30% — cards, nav, pills */
-  --color-border: #262633; /* hairline borders/dividers */
-  --color-text: #ededf2; /* primary text (solid near-white) */
-  --color-text-muted: #a1a1b5; /* muted/meta text */
-  --color-violet: #7c3aed; /* reserved accent (currently unused) */
-  --color-blue: #3b82f6; /* focus ring */
-  --color-cyan: #22d3ee; /* terminal accent — prompt + cursor */
+  /*
+   * Three-color system ONLY: black, white, cyan. Hierarchy (surfaces, borders,
+   * muted text) comes from OPACITY of white/black — never a fourth hue.
+   */
+  --color-bg: #000000; /* black — page + pane background */
+  --color-surface: #000000; /* black — panes read via their border, not fill */
+  --color-border: rgba(255, 255, 255, 0.16); /* white @ 16% — hairlines */
+  --color-text: #ffffff; /* white — primary text */
+  --color-text-muted: rgba(255, 255, 255, 0.55); /* white @ 55% — meta text */
+  --color-cyan: #22d3ee; /* cyan — the only accent (prompt, cursor, focus, active) */
 
   --radius-sm: 6px; /* tech pills, small chips */
   --radius-md: 10px; /* buttons */

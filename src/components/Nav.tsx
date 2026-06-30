@@ -19,7 +19,7 @@ import { withBasePath } from "@/lib/base-path";
  * `rel="noopener noreferrer"`. No external links exist yet, so none are emitted.
  *
  * Every interactive element shows the DSYS-04 focus ring
- * (`focus-visible:outline-blue`, 2px / 2px offset). Pure markup → Server
+ * (`focus-visible:outline-cyan`, 2px / 2px offset). Pure markup → Server
  * Component (no `"use client"`).
  */
 
@@ -36,7 +36,7 @@ export function Nav() {
         {/* Brand mark — returns to the top of the page (the hero region). */}
         <a
           href="#main"
-          className="rounded-[var(--radius-sm)] font-display text-lg font-semibold tracking-[-0.01em] text-text transition-colors duration-150 hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+          className="rounded-[var(--radius-sm)] font-display text-lg font-semibold tracking-[-0.01em] text-text transition-colors duration-150 hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
         >
           Jacky Zhang
         </a>
@@ -49,8 +49,8 @@ export function Nav() {
                 href={link.href}
                 className={cn(
                   "relative rounded-[var(--radius-sm)] px-3 py-2 font-mono text-sm uppercase tracking-[0.08em] text-text-muted transition-colors duration-150 hover:text-text",
-                  "after:absolute after:inset-x-3 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-blue after:transition-transform after:duration-150 hover:after:scale-x-100 focus-visible:after:scale-x-100",
-                  "focus-visible:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue",
+                  "after:absolute after:inset-x-3 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-cyan after:transition-transform after:duration-150 hover:after:scale-x-100 focus-visible:after:scale-x-100",
+                  "focus-visible:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan",
                 )}
               >
                 {link.label}

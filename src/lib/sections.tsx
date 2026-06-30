@@ -28,7 +28,7 @@ const Echo = ({ children }: { children: ReactNode }) => (
 );
 
 const tLink =
-  "text-text underline decoration-border underline-offset-4 transition-colors hover:decoration-cyan focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue";
+  "text-text underline decoration-border underline-offset-4 transition-colors hover:decoration-cyan focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan";
 
 export const SECTIONS: SectionDef[] = [
   {

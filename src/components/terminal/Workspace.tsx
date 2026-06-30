@@ -103,7 +103,7 @@ export function Workspace() {
                 onClick={() => openPane(s.id)}
                 aria-pressed={active}
                 className={cn(
-                  "rounded-[var(--radius-sm)] border px-2.5 py-1 font-mono text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue",
+                  "rounded-[var(--radius-sm)] border px-2.5 py-1 font-mono text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan",
                   active
                     ? "border-cyan/60 text-cyan"
                     : "border-border text-text-muted hover:border-text-muted hover:text-text",
